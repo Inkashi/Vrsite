@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.4/plyr.css" />
+    <link
+      type="text/css"
+      href="{{ url_for('static', filename='css/style_info.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='fancybox-master/dist/jquery.fancybox.min.css')}}"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"
+    />
+    <script src="{{ url_for('static', filename='fancybox-master/dist/jquery.fancybox.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>{{maininfo[0]['title']}}</title>
+  </head>
+  <body class="info_screen">
+    <main class="info_bg">
+      <div class="_title">"{{maininfo[0]['title']}}"</div>
+      <div class="preview">
+        {% if maininfo[0]['src'].endswith('.mp4') %}
+        <video controls muted class="video">
+          <source
+            src="/{{ maininfo[0]['src'] }}"
+            type="video/mp4"
+            class="content"
+          />
+        </video>
+        {% else %}
+        <img
+          src="/{{ maininfo[0]['src'] }}"
+          alt="{{ maininfo[0]['thing'] }}"
+          class="content"
+        />
+        {% endif %}
+      </div>
+      <h1 class="headline">Описание</h1>
+      <div class="description" style="white-space: pre-wrap;">{{maininfo[0]['full_description']}}</div>
+      <h1 class="headline">Галлерея</h1>
+      <div class="gallery">
+        {% for item in gallery %}
+        <a href="/{{item}}" data-fancybox="gallery"
+          ><img src="/{{item}}" alt="тут картинка"
+        /></a>
+        {% endfor %}
+      </div>
+      <h1 class="headline">Оборудование</h1>
+      <div class="equipment">
+        {% for item in equipment %}
+        <div class="card" style="background-image: url('/{{item.photo}}');">
+          <div class="card-content">
+            <h1>{{item.title}}</h1>
+            <p>{{item.description}}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <h1 class="headline">Участники</h1>
+      <div class="members">
+        {% for item in members %}
+        <div class="card" style="background-image: url('/{{item.photo}}');">
+          <div class="card-content">
+            <h1>{{item.name}}</h1>
+            <p>{{item.description}}</p>
+          </div>
+        </div>
+        {% endfor %}
+            <h1></h1>
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

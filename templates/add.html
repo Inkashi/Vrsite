@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AddProject</title>
+    <link
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css')}}"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main style="display: flex; justify-content: center">
+      <form
+        action="/add"
+        method="post"
+        enctype="multipart/form-data"
+        style="height: 100%"
+      >
+        <h1>Добавление нового элемента</h1>
+        <table>
+          <tr>
+            <select id="fruits" name="category">
+              <option value="VR/AR/MR">VR/AR/MR</option>
+              <option value="AM">AM</option>
+              <option value="RI">RI</option>
+              <option value="3D Modeling">3D Modeling</option>
+            </select>
+            <input type="text" name="title" placeholder="Заголовок" />
+            <input
+              type="text"
+              name="thing"
+              placeholder="Если картинки не будет"
+            />
+            <input
+              type="file"
+              name="src"
+              placeholder="Файл"
+              onchange="validateFile(this)"
+            />
+            <input
+              type="text"
+              class="descriprion-admin"
+              name="description"
+              placeholder="Описание"
+            />
+            <select id="deviceorproject" name="type">
+              <option value="device">Device</option>
+              <option value="project" selected>Project</option>
+            </select>
+            <div id="hidden_block" style="max-width: 100%">
+              <p></p>
+              <textarea
+                name="full_description"
+                placeholder="Полное описание проекта"
+                class="full_description"
+                wrap="soft"
+              ></textarea>
+              <div id="gallery">
+                <h1>Добавление фотографии проекта</h1>
+                <div>
+                  <input
+                    id="PhotoInput"
+                    type="file"
+                    name="gallery[]"
+                    multiple
+                    accept=".jpg, .jpeg, .png, .gif"
+                    onchange="validateFile(this)"
+                  />
+                </div>
+              </div>
+              <h1>Добавление оборудования проекта</h1>
+              <div id="equipment">
+                <div>
+                  <input
+                    type="file"
+                    name="equipmentPhoto[]"
+                    onchange="validateFile(this)"
+                  />
+                  <input
+                    type="text"
+                    name="equipmentTitle[]"
+                    placeholder="Название"
+                  />
+                  <input
+                    type="text"
+                    name="equipmentDescription[]"
+                    placeholder="Описание"
+                  />
+                </div>
+              </div>
+              <button type="button" onclick="addEquipment()">
+                Добавить оборудование
+              </button>
+              <h1>Добавление участников</h1>
+              <div id="members">
+                <div>
+                  <input
+                    type="file"
+                    name="membersPhoto[]"
+                    onchange="validateFile(this)"
+                  />
+                  <input type="text" name="membersName[]" placeholder="ФИО" />
+                  <input
+                    type="text"
+                    name="membersDescription[]"
+                    placeholder="Описание"
+                  />
+                </div>
+              </div>
+              <button type="button" onclick="addMember()">
+                Добавить участника
+              </button>
+            </div>
+            <input type="submit" class="button-login" />
+          </tr>
+        </table>
+      </form>
+    </main>
+  </body>
+  <script>
+    var mySelect = document.getElementById("deviceorproject");
+    var hidden_block = document.getElementById("hidden_block");
+
+    mySelect.addEventListener("change", function () {
+      if (mySelect.value === "device") {
+        hidden_block.style.display = "none";
+      } else {
+        hidden_block.style.display = "block";
+      }
+    });
+
+    var errorMessage = "{{ error }}";
+    if (errorMessage) {
+      alert(errorMessage);
+    }
+
+    function addMember() {
+      var container = document.getElementById("members");
+      var div = document.createElement("div");
+      div.innerHTML = `
+      <input
+                    type="file"
+                    name="membersPhoto[]"
+                    onchange="validateFile(this)"
+                  />
+                  <input type="text" name="membersName[]" placeholder="ФИО" />
+                  <input
+                    type="text"
+                    name="membersDescription[]"
+                    placeholder="Описание"
+                  />
+        <button type="button" onclick="removeField(this)">Удалить</button>
+          `;
+      container.appendChild(div);
+    }
+
+    function addEquipment() {
+      var container = document.getElementById("equipment");
+      var div = document.createElement("div");
+      div.innerHTML = `
+        <input type="file" name="equipmentPhoto[]" onchange="validateFile(this)"/>
+        <input type="text" name="equipmentTitle[]" placeholder="Название" />
+        <input type="text" name="equipmentDescription[]" placeholder="Описание" />
+        <button type="button" onclick="removeField(this)">Удалить</button>
+          `;
+      container.appendChild(div);
+    }
+
+    function validateFile(fileInput) {
+      const files = fileInput.files;
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const fileName = file.name;
+        const fileExtension = fileName.split(".").pop().toLowerCase();
+
+        if (
+          fileExtension !== "jpg" &&
+          fileExtension !== "jpeg" &&
+          fileExtension !== "png" &&
+          fileExtension !== "gif"
+        ) {
+          alert("Разрешены только файлы JPG, JPEG, PNG и GIF.");
+          fileInput.value = "";
+          return;
+        }
+      }
+    }
+    function removeField(button) {
+      var field = button.parentNode;
+      field.parentNode.removeChild(field);
+    }
+  </script>
+</html>

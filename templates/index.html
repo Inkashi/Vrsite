@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.plyr.io/3.6.4/plyr.css">
+	<link type="text/css" href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+	<link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+	<title>VR</title>
+</head>
+
+<body>
+	<div class="area">
+		<video muted="muted" loop="loop" class="video" autoplay="autoplay">
+			<source src="../static/css/images/back.mp4" type="video/mp4">
+		</video>
+		<!-- Главная -->
+		<div class="start blocks" id="start">
+			<div class="nav_container">
+				<nav class="nav">
+					<div class="logo"></div>
+					<a href="#start" class="info-link is-active" name="start">Главная</a>
+					<a href="#about_us" class="info-link" name="about_us">О нас</a>
+					<a href="#direction" class="info-link" name="direction">Направления</a>
+					<a href="#examples" class="info-link" name="examples">Примеры</a>
+					<a href="#boss" class="info-link" name="boss">Руководитель</a>
+					<a href="#contacts" class="info-link" name="contacts">Контакты</a>
+					<span class="nav-indicator"></span>
+				</nav>
+			</div>
+			<div class="container starter">
+				<div class="description_title">Лаборатория <br> передовых цифровых технологий</div>
+				<div class="description_text text">Югорский государственный университет
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- О нас -->
+	<div class="blocks" id="about_us">
+		<div class="container" id="animated-block">
+			<div class="description">
+				<div class="description_title">О нас</div>
+				<div class="description_text">Основными направлениями деятельности лаборатории передовых цифровых
+					технологий являются двумерное и трехмерное моделирование, прототипирование, аддитивные технологии,
+					виртуальная и дополненная реальность.
+					На базе лаборатории студенты ЮГУ получают навыки проектирования двумерных чертежей для лазерной
+					резки и гравировки, трехмерных моделей для создания прототипов на 3Д принтерах, а также разработки
+					технологических решений в области дополненной и виртуальной реальности. Сотрудники лаборатории
+					принимают активное участие в разработке и внедрению новых технологий как в цифровое пространство
+					ЮГУ, так и его партнеров.</div>
+			</div>
+		</div>
+	</div>
+	<!-- Направления -->
+	<div class="blocks" id="direction">
+		<div class="container">
+			<div class="description">
+				<div class="description_title">Направления</div>
+				<div class="description_text 
+				directing">
+					<div class="card" id="animated-block"
+						style="background-image: url(https://nbiservice.ru/upload/medialibrary/4fc/4fcf0e2a74a5723e3783eccfcd5e3635.jpg);">
+						<div class="card-content">
+							<h1>VR, AR, MR</h1>
+							<p>AR (Дополненная Реальность): Смешивает виртуальные объекты с реальным окружением,
+								расширяя реальность через устройства, такие как смартфоны.<br>
+								VR (Виртуальная Реальность): Полностью погружает пользователя в виртуальное окружение,
+								изолируя от реального мира с помощью специальных устройств.<br>
+								MR (Смешанная Реальность): Объединяет элементы виртуальной и реальной реальности,
+								позволяя виртуальным объектам взаимодействовать с реальным окружением.</p>
+						</div>
+					</div>
+					<div class="card" id="animated-block"
+						style="background-image: url(https://imgs.search.brave.com/ffod87SklTt1LQJXV8MtNGuaPvLy2BpHinRh8CdEJj8/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9kYW1h/c3NldHMuYXV0b2Rl/c2submV0L2NvbnRl/bnQvZGFtL2F1dG9k/ZXNrL2RyYWZ0ci8y/MzY5Ni8zZG1vZGVs/aW5nLndpcmVmcmFt/ZWhvdXNlLjIuMTE3/Mng2NjAuanBlZw);">
+						<div class="card-content">
+							<h1>3D моделирование</h1>
+							<p>3D-моделирование — процесс создания трехмерных объектов различных конфигураций с
+								использованием компьютерной графики. Результат моделинга может использоваться как
+								техническая инструкция для печати на 3D-принтере, рендеринга или анимации. </p>
+						</div>
+					</div>
+					<div class="card" id="animated-block"
+						style="background-image: url(https://www.stankoff.ru/files/blog/YtE1Rm11lDvp4loOFrNrH4hBbU8sKeuKddYDzIHl-big.jpg);">
+						<div class="card-content">
+							<h1>Аддитивные технологии</h1>
+							<p>Аддитивные технологии (общее название всех технологий 3D-печати) позволяют изготавливать
+								любое изделие послойно на основе компьютерной 3D-модели.</p>
+						</div>
+					</div>
+					<div class="card" id="animated-block"
+						style="background-image: url(https://www.vitstamp.ru/img/tov/image123.jpg);">
+						<div class="card-content">
+							<h1>Лазерная гравировка</h1>
+							<p>Лазерная гравировка — это метод нанесения изображения на какое-либо изделие с помощью
+								сфокусированного лазерного луча. Как правило, это изображение имеет некоторую глубину
+								(рельеф), и в этом заключается основное отличие лазерной гравировки от лазерной
+								маркировки. Лазерной гравировкой часто называют само изображение, полученное на изделии.
+								Как правило, это логотипы, надписи, какой-либо орнамент или рисунок.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Примеры -->
+	<div class="blocks" id="examples">
+		<div class="container full-size">
+			<div class="description">
+				<div class="description_title">Примеры работ</div>
+				<div class="button_area">
+					<div class="arrow prev"></div>
+					<span class="text" id="changeText">VR/AR/MR</span>
+					<div class="arrow next"></div>
+				</div>
+				<div class="swiper swiper-v">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<div class="swiper swiper-prj">
+								<div class="swiper-wrapper wrapper-prj">
+									{% for card in cards %}
+									<div class="swiper-slide slide-prj" id="animated-block">
+										<div class="slide-text">
+											<a class="details" href="/information/{{card.id}}"  target="_blank"><span class="arrow-8"></span>{{card.title}}</a>
+											<p>{{card.description}}</p>
+										</div>
+										{% if card.src.endswith('.mp4') %}
+										<video controls muted class="video_project slide-image video-js">
+											<source src="/{{ card.src }}" type="video/mp4">
+											{{card.thing}}
+										</video>
+									{% else %}
+										<img src="/{{ card.src }}" alt="{{ card.thing }}" class="slide-image">
+									{% endif %}
+									</div>
+									{% endfor %}
+									<div class="swiper-slide slide-prj" id="animated-block"></div>
+								</div>
+							</div>
+						</div>
+						<div class="swiper-slide slide-devices">
+							<div class="text" style="margin-top:5%">Используемое оборудование</div>
+							<div class="swiper swiper-device">
+								<div class="swiper-wrapper wrapper-device">
+									{% for device in devicesCard %}
+									<div class="swiper-slide slide-device clickable-slide">
+										<div class="card device" id="animated-block" style="background-image: url('/{{device.src}}');">
+											<div class="card-content">
+												<h1>{{device.title}}</h1>
+												<p>{{device.description}}</p>    
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+									<div class="swiper-slide slide-device clickable-slide"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="swiper-pagination-v"></div>
+			</div>
+		</div>
+	</div>
+	<!-- Руководитель -->
+	<div class="blocks" id="boss">
+		<div class="container">
+			<div class="description boss" id="animated-block">
+				<div class="info-worker">
+					<div class="photoBoss"></div>
+					<div class="info_boss"><span>Сафонов Егор Иванович</span>Руководитель лаборатории передовых цифровых технологий<span class="color-text">Должность</span>Кандидат физико-математических
+						наук,<br> доцент Инженерной школы цифровых технологий
+						<span>Рабочее место в ЮГУ </span> 2 корпус 505 кабинет
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Обратная связь -->
+	<div class="footer" id="contacts">
+		<div class="social">
+			<div class="vk">
+				<a href="https://vk.com" class="link">Связаться в ВК</a>
+			</div>
+			<div class="tg">
+				<a href="https://web.telegram.org/" class="link">Связаться в Телеграме</a>
+			</div>
+		</div>
+		<div class="back">
+			<a data-fancybox href="#hidden" class="btn">Связаться</a>
+		</div>
+		<div id="hidden" class="back_window" style="display: none">
+			<form action="" method="post" class="form">
+				<div class="email_area">
+					<div class="email_name">Ваша почта</div>
+					<input type="text" name="email">
+				</div>
+				<div class="send_area">
+					<div class="send_name">Ваше сообщение</div>
+					<textarea name="text_area" class="text_area" cols="30" rows="10"></textarea>
+				</div>
+				<div class="send_button_area">
+					<input type="submit" class="btn">
+				</div>
+			</form>
+		</div>
+	</div>
+	</div>
+	<script src="{{ url_for('static', filename='js/script.js')}}"></script>
+</body>
+
+</html>

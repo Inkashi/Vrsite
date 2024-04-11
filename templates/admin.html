@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+    <link
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css')}}"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="body-admin-panel">
+    {% if flag %}
+    <form method="post" class="login-form">
+      <div
+        class="text"
+        style="color: black; font-size: 1vw; text-align: center"
+      >
+        Вы хотите войти на страницу администратора, для этого вам надо ввести
+        пароль
+      </div>
+      <input type="password" name="pass" id="pass" style="text-align: center" />
+      <input class="button-login" type="submit" value="Send" />
+    </form>
+    {% endif %} {% if not flag %}
+    <div class="admin-panel">
+      <form action="/logout" method="post">
+        <input type="submit" class="button-login" value="Завершить сессию" />
+      </form>
+      <form action="/" method="get">
+        <input type="submit" class="button-login" value="На главную" />
+      </form>
+      <form action="/AddProject" method="post">
+        <input type="submit" class="button-login" value="Добавить проект" />
+      </form>
+    </div>
+    <table>
+      <tr>
+        <td>id</td>
+        <td>category</td>
+        <td>descriprion</td>
+        <td>thing</td>
+        <td>title</td>
+      </tr>
+      {% for card in arr %}
+      <tr>
+        {% for i in card %}
+        <td {% if i=="device" %} style="background-color: red" {% elif i=="VR/AR/MR" %} style="background-color: green;" {% elif i=="AM" %} style="background-color: yellow;" {% elif i=="RI" %} style="background-color: blue;" {% elif i=="3D Modeling" %} style="background-color: purple;"{% endif %}>
+          {{i}}
+        </td>
+        {% endfor %}
+        <td>
+          <!-- <form action="admin/change" method="post">
+            <input type="hidden" value="{{card[0]}}" name="id" id="id" />
+            <button>
+              <img
+                style="width: 2vw; height: 2vw"
+                src="../static/css/images/pen.png"
+              />
+            </button>
+          </form> -->
+        </td>
+        <td>
+          <form action="/delete" method="post">
+            <input type="hidden" value="{{card[0]}}" name="id" />
+            <button>
+              <img
+                style="width: 2vw; height: 2vw"
+                src="../static/css/images/backet.png"
+              />
+            </button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% endif %}
+
+  </body>
+</html>
