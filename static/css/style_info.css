@@ -115,14 +115,14 @@ a > img {
 }
 
 .members > div {
-  width: 18vw !important;
+  width: 18vw;
   height: 35vh;
   margin-left: 1vw;
   padding-top: 5%;
 }
 
 .equipment > div {
-  min-width: 20vw !important;
+  min-width: 20vw;
   height: 25vh;
   margin-right: 1vw;
 }
@@ -230,5 +230,41 @@ a > img {
     transition-duration: 00.01ms !important;
     scroll-behavior: auto !important;
     transition-delay: 0ms !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .info_bg {
+    width: 100% !important;
+    border-radius: 5px;
+  }
+
+  .preview {
+    height: max-content;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .gallery a {
+    width: 100px;
+    height: 100px;
+  }
+
+  .card {
+    min-width: 200px !important;
+  }
+
+  .card-content {
+    backdrop-filter: blur(5px);
+  }
+
+  .card h1 {
+    font-size: 24px;
+  }
+
+  .card p {
+    font-size: 14px;
   }
 }

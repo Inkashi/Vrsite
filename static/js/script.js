@@ -38,7 +38,6 @@ function handleIndicator(el) {
     item.classList.remove("is-active");
     item.removeAttribute("style");
   });
-
   indicator.style.width = `${el.offsetWidth}px`;
   indicator.style.left = `${el.offsetLeft}px`;
   active_item = el;
@@ -122,6 +121,7 @@ function handleIntersection(entries, observer) {
     if (entry.isIntersecting) {
       items.forEach((element) => {
         if (element.name == entry.target.id) {
+          console.log(entry.target.id);
           handleIndicator(element);
         }
       });
@@ -150,6 +150,22 @@ function Change(cards) {
       updateCardsUI(data.updatedCards, data.updatedDeviceCards);
     });
 }
+
+const mediaQuery = window.matchMedia("(min-width: 470px)");
+
+const handleMediaChange = (mediaQuery) => {
+  if (mediaQuery.matches) {
+    swiper_device.params.slidesPerView = 2;
+    swiper_device.update();
+  } else {
+    swiper_device.params.slidesPerView = 1;
+    swiper_device.update();
+  }
+};
+
+handleMediaChange(mediaQuery);
+
+mediaQuery.addListener(handleMediaChange);
 
 function updateCardsUI(updatedCards, updatedDeviceCards) {
   swiper_main.removeAllSlides();
