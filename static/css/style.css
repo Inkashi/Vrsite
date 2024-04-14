@@ -1099,7 +1099,7 @@ td {
   }
 
   .card {
-    width: 80vw !important;
+    width: 100% !important;
   }
 
   .card-content {

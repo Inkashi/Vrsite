@@ -151,7 +151,7 @@ function Change(cards) {
     });
 }
 
-const mediaQuery = window.matchMedia("(min-width: 470px)");
+const mediaQuery = window.matchMedia("(min-width: 480px)");
 
 const handleMediaChange = (mediaQuery) => {
   if (mediaQuery.matches) {
